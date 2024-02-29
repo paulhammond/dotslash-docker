@@ -10,4 +10,8 @@ RUN echo '{"foo":0}' | dotslash/target/release/dotslash ./jq .
 
 FROM debian:bookworm-slim@sha256:d02c76d82364cedca16ba3ed6f9102406fa9fa8833076a609cabf14270f43dfc
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ca-certificates curl && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY --from=build /build/dotslash/target/release/dotslash /usr/bin
