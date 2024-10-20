@@ -8,7 +8,7 @@ RUN ./fetch-dotslash
 COPY jq .
 RUN echo '{"foo":0}' | ./dotslash ./jq .
 
-FROM debian:bookworm-slim@sha256:d02c76d82364cedca16ba3ed6f9102406fa9fa8833076a609cabf14270f43dfc
+FROM debian:bookworm-slim@sha256:36e591f228bb9b99348f584e83f16e012c33ba5cad44ef5981a1d7c0a93eca22
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates curl && \
