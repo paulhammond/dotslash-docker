@@ -12,12 +12,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Checkout dotslash
-        uses: actions/checkout@v4
-        with:
-          repository: facebook/dotslash
-          ref: v0.4.1
-          path: dotslash
       - name: Setup QEMU
         uses: docker/setup-qemu-action@68827325e0b33c7199eb31dd4e31fbe9023e06e3 # v3.0.0
         with:

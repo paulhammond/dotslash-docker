@@ -1,12 +1,12 @@
-FROM rust:1.76.0-bookworm@sha256:a71cd88f9dd32fbdfa67c935f55165ddd89b7166e95de6c053c9bf33dd7381d5 AS build
+FROM buildpack-deps:bookworm-curl@sha256:89f0653a0a912939914d7df4bfbf6b6759e1713ac7307b734d205628eb195879 AS fetch
 
-WORKDIR /build
+WORKDIR /fetch
 
-COPY dotslash dotslash
-RUN cd dotslash && cargo build --release
+COPY fetch-dotslash fetch-dotslash
+RUN ./fetch-dotslash
 
 COPY jq .
-RUN echo '{"foo":0}' | dotslash/target/release/dotslash ./jq .
+RUN echo '{"foo":0}' | ./dotslash ./jq .
 
 FROM debian:bookworm-slim@sha256:d02c76d82364cedca16ba3ed6f9102406fa9fa8833076a609cabf14270f43dfc
 
@@ -14,4 +14,4 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates curl && \
     rm -rf /var/lib/apt/lists/*
 
-COPY --from=build /build/dotslash/target/release/dotslash /usr/bin
+COPY --from=fetch /fetch/dotslash /usr/bin

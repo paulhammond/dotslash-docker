@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+if [ "$(uname -m)" = "aarch64" ]; then
+    curl -o dotslash.tgz -L https://github.com/facebook/dotslash/releases/download/v0.4.3/dotslash-linux-musl.arm64.v0.4.3.tar.gz
+    echo "43370d57826ef35c3ee36ff478dd45809a2a5cf4c86f8556c6d9305eb27297d6  dotslash.tgz" | sha256sum --check
+else
+    curl -o dotslash.tgz -L https://github.com/facebook/dotslash/releases/download/v0.4.3/dotslash-linux-musl.x86_64.v0.4.3.tar.gz
+    echo "ecc86224cefdb8501c1969031852a106a75e5350f1a6029fa2bf0a4c73ec98ec  dotslash.tgz" | sha256sum --check
+fi
+
+tar -xvzf dotslash.tgz
