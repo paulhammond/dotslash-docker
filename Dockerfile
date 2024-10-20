@@ -15,3 +15,5 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=fetch /fetch/dotslash /usr/bin
+
+CMD /usr/bin/dotslash
