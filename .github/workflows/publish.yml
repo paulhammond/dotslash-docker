@@ -36,7 +36,7 @@ jobs:
           # hardcode tags as there's no git metadata that provides them
           tags: |
             type=raw,value=bookworm
-            type=raw,value=0.4.3
+            type=raw,value=0.5.0
           labels: |
             org.opencontainers.image.description=dotslash
             org.opencontainers.image.title=dotslash
