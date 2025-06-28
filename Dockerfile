@@ -16,4 +16,4 @@ RUN apt-get update && \
 
 COPY --from=fetch /fetch/dotslash /usr/bin
 
-CMD /usr/bin/dotslash
+CMD ["/usr/bin/dotslash"]
