@@ -1,4 +1,4 @@
-FROM buildpack-deps:bookworm-curl@sha256:104f8217967876111a4e8f72495f5f0989a2d6b9c2b91622ddf66e7371df6e36 AS fetch
+FROM buildpack-deps:bookworm-curl@sha256:138493088fe1e6bf6bae848411a3c07428649d0cc4664974d48f7a171608f9be AS fetch
 
 WORKDIR /fetch
 
@@ -8,7 +8,7 @@ RUN ./fetch-dotslash
 COPY jq .
 RUN echo '{"foo":0}' | ./dotslash ./jq .
 
-FROM debian:bookworm-slim@sha256:f70dc8d6a8b6a06824c92471a1a258030836b26b043881358b967bf73de7c5ab
+FROM debian:bookworm-slim@sha256:e5865e6858dacc255bead044a7f2d0ad8c362433cfaa5acefb670c1edf54dfef
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates curl && \
